@@ -66,11 +66,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'dracula/vim'
+Plug 'dracula/vim', {'as': 'dracula'}
 
 call plug#end()
 
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme dracula
+let g:dracula_italic = 0
 
 set bg=dark
 
@@ -98,6 +100,8 @@ nnoremap <c-u> viwU
 " Wrap current word in double quotes or single quotes
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+
+nnoremap <leader>nh :nohl<cr>
 
 " Copy the entire buffer to the clipboard
 nnoremap <leader><leader><c-c> gg"*yG``
