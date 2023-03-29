@@ -19,6 +19,12 @@ These are the key mappings and shortcuts that I use the most often:
 
 ### Plugins
 
+I use [vim-plug](https://github.com/junegunn/vim-plug) as my Vim plugin manager. Just type `:PlugInstall` after adding a plugin from a github repository.
+
+* [Vim Commentary](https://github.com/tpope/vim-commentary): Literally the most useful vim plugin. Just type `5gcc` to comment out 5 lines of code in any programming language.
+* [Vim Gitgutter](https://github.com/airblade/vim-gitgutter): It shows the changes next to the line number in files in a git repository.
+* [Vim Surround](https://github.com/tpope/vim-surround)
+
 ### Eliminating Bad Habits
 
 I disabled the arrow keys in both **Normal** and **Insert** modes. Moving around the file with **HJKL** is much more efficient. There are other mappings for efficient navigation too that I use quite often:
