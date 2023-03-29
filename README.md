@@ -12,10 +12,10 @@ I've used many different colorschemes but only 2 have managed to keep me sane ov
 
 These are the key mappings and shortcuts that I use the most often:
 
-* **,,v** and **,,s**: To quickly open, edit, and source my VIMRC. Whenever I feel like I'm repeating my self with a command, it's convenient to use these mappings to add a quick key binding in my VIMRC.
-* **CTRL-u**: Change the word under the cursor to uppercase. This is exceptionally helpful when I'm defining constants or header gaurds in my C++ projects (Since they are all uppercase).
-* **,nh** Disable highlighting after search. It's easier to type these than `:nohl` every time.
-* **\s**: This expands into `std::` in C++. I don't want to make all the names from the standard library visible in my programs. That's why this little abbreviation is super handy. 
+* `,,v` and `,,s`: To quickly open, edit, and source my VIMRC. Whenever I feel like I'm repeating my self with a command, it's convenient to use these mappings to add a quick key binding in my VIMRC.
+* `CTRL-u`: Change the word under the cursor to uppercase. This is exceptionally helpful when I'm defining constants or header gaurds in my C++ projects (Since they are all uppercase).
+* `,nh`: Disable highlighting after search. It's easier to type these than `:nohl` every time.
+* `\s`: This expands into `std::` in C++. I don't want to make all the names from the standard library visible in my programs. That's why this little abbreviation is super handy. 
 
 ### Plugins
 
