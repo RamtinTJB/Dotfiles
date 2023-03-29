@@ -57,8 +57,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
-"Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
