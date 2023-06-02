@@ -2,6 +2,22 @@
 
 This repository contains the dotfiles in my home directory. Feel free to use any of these configuration files as you wish. Any contribution is appreciated!
 
+## Installation
+
+Install [tmux](https://github.com/tmux/tmux/wiki/Installing) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Then run the following commands in the command line:
+
+```sh
+curl -fLo setup.sh https://raw.githubusercontent/RamtinTJB/Dotfiles/main/dotfiles_setup.sh
+chmod +x setup.sh
+./setup.sh
+```
+
+This script will install the package managers for vim and tmux and will download the dotfiles in the home directory. If any of the dotfiles already exist, they will be backed up in `.config-backup` directory.
+To download and install the plugins:
+
+* `:PlugInstall` in vim
+* `CTRL-SPACE` I in tmux
+
 ## My VIMRC
 
 ### Colorschemes
