@@ -16,7 +16,7 @@ This script will install the package managers for vim and tmux and will download
 To download and install the plugins:
 
 * `:PlugInstall` in vim
-* `CTRL-SPACE` I in tmux
+* `CTRL-SPACE I` in tmux
 
 ## My VIMRC
 
