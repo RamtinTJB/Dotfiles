@@ -117,6 +117,7 @@ nnoremap <leader><leader><c-c> gg"*yG``
 iabbrev @@ ramtintjb@gmail.com
 
 " CPP specifics
+nnoremap <leader>t :TagbarToggle<CR>
 augroup filetype_cpp
 	autocmd!
 	autocmd FileType cpp :inoremap <buffer> <localleader>s std::
