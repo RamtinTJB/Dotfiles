@@ -4,6 +4,7 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 set nocompatible
+set termguicolors
 
 filetype plugin indent on   " Load plugins according to detected filetype
 syntax on                   " Enable syntax highlighting
@@ -69,16 +70,14 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', {'as': 'dracula'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'catppuccin/vim', {'as': 'catppuccin'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'preservim/tagbar'
 
 call plug#end()
 
 "colorscheme gruvbox
-colorscheme dracula
+colorscheme catppuccin_mocha
 let g:dracula_italic = 0
 
 set bg=dark
@@ -138,16 +137,6 @@ nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
-
-inoremap <silent><expr> <TAB>
-    \ coc#pum#visible() ? coc#pum#next(1) :
-    \ CheckBackspace() ? "\<TAB>" :
-    \ coc#refresh()
-
-function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~# '\s'
-endfunction
 
 " Quitting bad habits :)
 inoremap <esc> <nop>
