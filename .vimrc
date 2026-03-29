@@ -129,6 +129,12 @@ augroup filetype_markdown
 	autocmd FileType markdown :onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 augroup END
 
+augroup filetype_indent
+  autocmd!
+  autocmd FileType javascript,typescript,json,yaml,html,css
+    \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 
