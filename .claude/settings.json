@@ -1,6 +1,16 @@
 {
-  "statusLine": { "type": "command",
-    "command": "bash /Users/rtjb/.claude/statusline-command.sh"
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "model": "sonnet[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
@@ -9,12 +19,5 @@
         "repo": "anthropics/skills"
       }
     }
-  },
-  "enabledPlugins": {
-    "skill-creator@claude-plugins-official": true
-  },
-  "attribution": {
-      "commit": "",
-      "pr": ""
   }
 }
