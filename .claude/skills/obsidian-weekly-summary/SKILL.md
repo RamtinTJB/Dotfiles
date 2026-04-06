@@ -26,4 +26,4 @@ IMPORTANT FORMATTING NOTE FOR THE SUMMARY
 after creating the summary, move the notes for the specified week to the folder corresponding to its month. for instance, if you are summarizing notes from a week in March 2026, move the notes to the "March 2026 folder".
 - create the folder if it doesn't exist yet
 - move the summary you created to this folder as well
-- if the days span two months, move each note to the appropriate folder and create the folder if it doesn't exist
+- if the days span two months, move each note to the appropriate folder and create the folder if it doesn't exist. in this case, the summary should be moved to the latter month's folder
