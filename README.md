@@ -1,52 +1,68 @@
 # Dotfiles
 
-This repository contains the dotfiles in my home directory. Feel free to use any of these configuration files as you wish. Any contribution is appreciated!
+Personal configuration for vim, tmux, and Claude Code.
 
-## Installation
+## What's here
 
-Install [tmux](https://github.com/tmux/tmux/wiki/Installing) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). Then run the following commands in the command line:
+- `.vimrc` — Vim editor config
+- `.tmux.conf` — Tmux terminal multiplexer config
+- `.claude/` — Claude Code settings and custom skills
+- `dotfiles_setup.sh` — Install script
+
+## Setup
+
+Requires [tmux](https://github.com/tmux/tmux/wiki/Installing) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ```sh
-curl -fLo setup.sh https://raw.githubusercontent.com/RamtinTJB/Dotfiles/refs/heads/main/dotfiles_setup.sh
+curl -fLo dotfiles_setup.sh https://raw.githubusercontent.com/RamtinTJB/Dotfiles/refs/heads/main/dotfiles_setup.sh
 chmod +x dotfiles_setup.sh
 ./dotfiles_setup.sh
 ```
 
-This script will install the package managers for vim and tmux and will download the dotfiles in the home directory. If any of the dotfiles already exist, they will be backed up in `.config-backup` directory.
-To download and install the plugins:
+The script installs vim-plug and TPM, then checks out the dotfiles into your home directory. Existing files are backed up to `.config-backup`.
 
-* `:PlugInstall` in vim
-* `CTRL-SPACE I` in tmux
+After setup, install plugins:
+- Vim: `:PlugInstall`
+- Tmux: `prefix` + `I`
 
-## My VIMRC
+## Vim
 
-### Colorschemes
+**Theme:** Catppuccin Mocha (Dracula and Gruvbox also included).
 
-I've used many different colorschemes but only 3 have managed to keep me sane over the long term. [Catppuccin](https://catppuccin.com/), [Dracula](https://github.com/dracula/vim) and [Gruvbox](https://github.com/morhetz/gruvbox) (Dark). Currently I'm using the Catppuccin theme in most environments.
+**Plugins** (via [vim-plug](https://github.com/junegunn/vim-plug)): fzf, fugitive, coc.nvim, commentary, surround, gitgutter, airline, auto-pairs, vim-tmux-navigator, and a few more.
 
-### Keybindings
+**Notable config choices:**
+- `jk` to exit insert mode, arrow keys disabled
+- Leader: `,` — local leader: `\`
+- `,,v` / `,,s` to open and source vimrc
+- LSP via COC (definitions, references, type info)
+- 4-space indent by default, 2-space for JS/TS/JSON/YAML/HTML/CSS
 
-These are the key mappings and shortcuts that I use the most often:
+## Tmux
 
-* `,,v` and `,,s`: To quickly open, edit, and source my VIMRC. Whenever I feel like I'm repeating my self with a command, it's convenient to use these mappings to add a quick key binding in my VIMRC.
-* `CTRL-u`: Change the word under the cursor to uppercase. This is exceptionally helpful when I'm defining constants or header gaurds in my C++ projects (Since they are all uppercase).
-* `,nh`: Disable highlighting after search. It's easier to type these than `:nohl` every time.
-* `\s`: This expands into `std::` in C++. I don't want to make all the names from the standard library visible in my programs. That's why this little abbreviation is super handy. 
+**Prefix:** `CTRL-Space` on Linux, `CTRL-a` on macOS.
 
-### Plugins
+**Notable config choices:**
+- Vi mode with `hjkl` pane navigation
+- `|` and `-` for horizontal/vertical splits (preserves cwd)
+- `Space` to toggle last window
+- Windows and panes start at 1
+- Dracula theme with CPU/RAM in the status bar
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) for seamless movement between vim splits and tmux panes
 
-I use [vim-plug](https://github.com/junegunn/vim-plug) as my Vim plugin manager. Just type `:PlugInstall` after adding a plugin from a github repository.
+## Claude Code
 
-* [Vim Commentary](https://github.com/tpope/vim-commentary): Literally the most useful vim plugin. Just type `5gcc` to comment out 5 lines of code in any programming language.
-* [Vim Gitgutter](https://github.com/airblade/vim-gitgutter): It shows the changes next to the line number in files in a git repository.
-* [Vim Surround](https://github.com/tpope/vim-surround)
+### Configuration
 
-### Eliminating Bad Habits
+- **Model:** Opus, effort level set to high
+- **Plugins:** skill-creator, clangd-lsp, rust-analyzer-lsp
+- **Status line:** Custom script showing model name, git branch/status, context window usage %, and daily/weekly token consumption (tracked via a local JSONL log)
 
-I disabled the arrow keys in both **Normal** and **Insert** modes. Moving around the file with **HJKL** is much more efficient. There are other mappings for efficient navigation too that I use quite often:
+### Skills
 
-* **CTRL-f**: Scroll one page down
-* **CTRL-b**: Scroll one page up
-* **zz**: Place the current line at the center of the window
-
-Another bad habit I used to have was exiting the **Insert** mode using the `<esc>` key. The `<esc>` key is a far reach for the pinky on the left hand and it's important to exit the insert mode and save the changes every few seconds or so. That's why I use `jk` to exit the **Insert** mode instead. The mouse buttons and scrolling functionalities are also disabled in my VIMRC.
+| Skill | Description |
+|-------|-------------|
+| `commit-succinct` | Stage and commit with a short message |
+| `gws-calendar-insert` | Create Google Calendar events from the terminal |
+| `obsidian-weekly-summary` | Aggregate Obsidian daily notes into a structured weekly review |
+| `review-dirty` | Send uncommitted changes to Codex for independent code review |
