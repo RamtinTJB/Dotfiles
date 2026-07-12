@@ -57,6 +57,16 @@ exec-on-workspace-change = ['/bin/bash', '-c',
     alt-shift-l = 'move up'
     alt-shift-semicolon = 'move right'
 
+    alt-left =  'focus --boundaries-action wrap-around-the-workspace left'
+    alt-down =  'focus --boundaries-action wrap-around-the-workspace down'
+    alt-up =    'focus --boundaries-action wrap-around-the-workspace up'
+    alt-right = 'focus --boundaries-action wrap-around-the-workspace right'
+
+    alt-shift-left =  'move left'
+    alt-shift-down =  'move down'
+    alt-shift-up =    'move up'
+    alt-shift-right = 'move right'
+
     # Consider using 'join-with' command as a 'split' replacement if you want to enable
     # normalizations
     alt-h = 'split horizontal'
