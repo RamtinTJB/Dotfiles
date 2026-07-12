@@ -7,7 +7,7 @@ allowed-tools: Read, Bash(ls *)
 ---
 
 summarize my readings, tasks, and the problems I have solved in the previous weeks by reading the daily notes I've taken from $0 to $1
-- these files are located in /Users/rtjb/Obsidian/Notes/Daily Notes and are formatted as yyyy-mm-dd.md
+- these files are located in ~/Obsidian/Notes/Daily Notes and are formatted as yyyy-mm-dd.md
 - only read the notes from $0 to $1, fully disregard any other markdown file in this directory
 
 the name of the summary file must be "weekly\_summary\_{start-date}\_{end-date}"
