@@ -1,0 +1,119 @@
+# SketchyBar — Catppuccin Macchiato theme (slim, no per-item backgrounds).
+# aerospace workspaces + app icons, system meters, world clock, next event.
+# Docs: https://felixkratz.github.io/SketchyBar/
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+source "$CONFIG_DIR/colors.sh"
+
+##### Bar: slim floating strip #####
+sketchybar --bar position=top \
+                 height=26 \
+                 y_offset=4 \
+                 margin=8 \
+                 corner_radius=8 \
+                 blur_radius=30 \
+                 color="$BAR_COLOR" \
+                 border_width=1 \
+                 border_color="$SURFACE1" \
+                 sticky=on
+
+##### Defaults #####
+default=(
+  padding_left=4
+  padding_right=4
+  icon.font="Hack Nerd Font:Bold:14.0"
+  label.font="Hack Nerd Font:Bold:12.0"
+  icon.color="$TEXT"
+  label.color="$TEXT"
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+  popup.background.color="$MANTLE"
+  popup.background.corner_radius=8
+  popup.background.border_width=2
+  popup.background.border_color="$SURFACE1"
+)
+sketchybar --default "${default[@]}"
+
+##### Left: aerospace workspaces (focused one highlighted) #####
+sketchybar --add event aerospace_workspace_change
+
+for sid in 1 2 3 4 5 O M; do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change front_app_switched \
+        --set space.$sid \
+        background.color="$MAUVE" \
+        background.corner_radius=5 \
+        background.height=20 \
+        background.drawing=off \
+        icon="$sid" \
+        icon.color="$SUBTEXT0" \
+        label.drawing=off \
+        update_freq=15 \
+        click_script="aerospace workspace $sid" \
+        script="$PLUGIN_DIR/aerospace.sh $sid"
+done
+
+##### Left: focused app #####
+sketchybar --add item front_app left \
+           --set front_app \
+                 icon.font="sketchybar-app-font:Regular:16.0" \
+                 icon.color="$LAVENDER" \
+                 label.color="$TEXT" \
+                 script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+##### Right: clock #####
+sketchybar --add item clock right \
+           --set clock update_freq=10 \
+                 icon= icon.color="$BLUE" \
+                 script="$PLUGIN_DIR/clock.sh"
+
+##### Right: battery + volume (with popups) #####
+sketchybar --add item battery right \
+           --set battery update_freq=120 \
+                 click_script="sketchybar --animate tanh 12 --set battery popup.drawing=toggle" \
+                 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change \
+           --add item battery.details popup.battery \
+           --set battery.details icon= icon.color="$PEACH" label="…"
+
+sketchybar --add item volume right \
+           --set volume icon.color="$SKY" \
+                 click_script="sketchybar --animate tanh 12 --set volume popup.drawing=toggle" \
+                 script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add slider volume.slider popup.volume \
+           --set volume.slider \
+                 slider.width=100 \
+                 slider.background.height=6 \
+                 slider.background.corner_radius=3 \
+                 slider.background.color="$SURFACE2" \
+                 slider.highlight_color="$BLUE" \
+                 script="$PLUGIN_DIR/volume_slider.sh" \
+           --subscribe volume.slider mouse.clicked
+
+##### Right: cpu + mem #####
+sketchybar --add item mem right \
+           --set mem update_freq=10 icon= icon.color="$PEACH" \
+                 script="$PLUGIN_DIR/mem.sh"
+
+sketchybar --add graph cpu right 40 \
+           --set cpu update_freq=5 \
+                 graph.color="$GREEN" \
+                 graph.fill_color="$SURFACE2" \
+                 graph.line_width=2 \
+                 icon= icon.color="$GREEN" \
+                 label.drawing=on \
+                 script="$PLUGIN_DIR/cpu.sh"
+
+##### Right: next calendar event #####
+sketchybar --add item cal right \
+           --set cal update_freq=300 \
+                 icon.color="$MAUVE" \
+                 label.max_chars=34 \
+                 script="$PLUGIN_DIR/cal.sh"
+
+##### Run all scripts once #####
+sketchybar --update
